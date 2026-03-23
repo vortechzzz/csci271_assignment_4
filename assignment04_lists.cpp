@@ -37,11 +37,11 @@ template <typename T> class Node{
 
     ~Node(){
       // call destructors for the rest of the list
-
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-      cout<<"    ~Node(): you need to write this method <-------------"<<endl;
+      if(this->next != NULL)
+      {
+	this->next->~Node();
+	this->next = NULL;
+      }
 
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
@@ -57,14 +57,14 @@ template <typename T> class List{
         this->head = NULL;
       AN += 1;  // keep track of allocations
       }
-      
+
       // destroy the list by destroying the nodes
       ~List(){
-
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    ~List(): you need to write this method <-------------"<<endl;
+      if(this->head != NULL)
+      {
+	this->head->~Node();
+	this->head = NULL;
+      }
 
         DN += 1;  // keep track of deallocations
       }
