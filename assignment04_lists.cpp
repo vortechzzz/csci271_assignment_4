@@ -77,13 +77,31 @@ template <typename T> class List{
 
       // addLast(item) adds an element item of type T at the end of the list
       void addLast(T item){
+	//create a new node and store the item in it
+	Node<T>* pNode = new Node<T>;
+	pNode->element = item;
+	pNode->next = NULL;
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    addLast(item): you need to write this method <-------------"<<endl;
+	//if the list is empty, then the new node becomes the head
+	if(this->head == NULL)
+	{
+		this->head = pNode;
+	}
 
-        // cout<<"new node added at back!"<<endl; // your method MUST use this!
+	else
+	{
+		//go to the last node in the list
+		Node<T>* temp = this->head;
+		while(temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+
+		//link to the new node at the end
+		temp->next = pNode;
+	}
+
+        cout<<"new node added at back!"<<endl; // your method MUST use this!
       }
 
       // addFront(item) creates and adds a new element node 
