@@ -293,10 +293,32 @@ template <typename T> class List{
       T getAt(int index){
         T res = -9999;        // initialize the results to invalid element
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    getAt(): you need to write this method <-------------"<<endl;
+	//check if the list is empty
+	if(this->isEmpty())
+	{
+		cout << "linked list is empty !" << endl;
+	}
+
+	//check if the index is valid
+	else if(index < 0 || index >= this->size())
+	{
+		cout << "index out of bound!" << endl;
+	}
+
+	else
+	{
+		//go to the node at position index
+		Node<T>* temp = this->head;
+		int count = 0;
+		while(count < index)
+		{
+			count++;
+			temp = temp->next;
+		}
+
+		//return the element at that postion
+		res = temp->element;
+	}
 
         return res;  // return the results -- YOU MUST USE THIS!!!!
       }
