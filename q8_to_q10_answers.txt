@@ -36,3 +36,13 @@ benefits every method that calls size() or isEmpty() including addAt, removeAt, 
 
 
 Question 10: 
+
+There are 2 reasons why ~List() was called twice:
+
+1. Near the end of main(), the line "list.~List();" calls the destructor on the list object. This manually triggers cleanup
+of all the nodes and increments DN. However, this does NOT deallocate the list object itself because 'list' is a stack
+allocated variable and not a heap allocated one.
+
+2. When main() returns and the 'list' variable goes out of scope, C++ automatically calls the destructor for all stack
+allocated objects. Since 'list' is declared as "List<int> list;" on the stack, the compiler generates a second call to
+~List() as part of normal stack unwinding. 
