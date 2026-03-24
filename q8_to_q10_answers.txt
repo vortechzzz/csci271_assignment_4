@@ -4,6 +4,24 @@ Date: March 23, 2026
 
 Question 8:
 
+Best Case O(1):
+When the index is 0, the method inserts at the front of the list. It does not need to go through any nodes. It creates
+a new node, points its next to the current head, and updates the head pointer. No loops, so this is constant time.
+
+Worst Case O(n):
+When the index is equal to the size of the list, the while loop must go through all n existing nodes to find all the 
+node before the insertion point. The traversal visits each node once, so this runs in linear time comparable to n.
+
+Average Case O(n):
+On average, the insertion position is somewhere in the middle of the list. The expected number of traversals is
+about n/2, which is still O(n) since we drop constant factors in asymptotic analysis.
+
+Performance Issues:
+One obvious performance issue is that addAt calls this->size() at the start to validate the index. The size() method
+itself goes through the entire list from the head node to NULL, which is O(n). This means even a best case insertion 
+at index 0 actually costs O(n) because of the size() call at the beginning. The actual traversal to find the
+insertion point is also up to O(n), which makes the total worst case O(n) + O(n) = O(n), but with a constant factor 
+of about 2x what it needs to be. 
 
 
 Question 9:
