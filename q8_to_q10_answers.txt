@@ -26,6 +26,13 @@ of about 2x what it needs to be.
 
 Question 9:
 
+Without changing any of the structure, the most important imporvement would be to maintain a cached size variable in
+the List class. Instead of calling size() which goes through the entire list every time (O(n)), we would add an
+integer member variable to the List class that starts at 0 and is incremented by 1 in every add method and
+decremented by 1 in every remove method.
+
+By doing this, size() would return this->len in O(1) constant time instead of going through the whole list. This 
+benefits every method that calls size() or isEmpty() including addAt, removeAt, displayAll, and getAt.
 
 
 Question 10: 
