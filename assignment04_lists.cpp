@@ -264,13 +264,28 @@ template <typename T> class List{
 
       // removeFront() deletes the last element and its node in the list
       void removeFront(){
-       
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    removeFront(): you need to write this method <-------------"<<endl;
+	//check if the list is empty
+	if(this->isEmpty())
+	{
+		cout << "the list is empty!" << endl;
+	}
 
-          // cout<<"front item removed"<<endl; // your method MUST use this!
+	else
+	{
+		//save a pointer to the current head
+		Node<T>* temp = this->head;
+
+		//move the head to the next node
+		this->head = temp->next;
+
+		//disconnect the old head from the rest of the list
+		temp->next = NULL;
+
+		//destroy the old head node
+		temp->~Node();
+
+                cout<<"front item removed"<<endl; // your method MUST use this!
+	}
 
       }
 
