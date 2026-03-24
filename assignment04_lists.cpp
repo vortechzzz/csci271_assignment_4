@@ -107,13 +107,17 @@ template <typename T> class List{
       // addFront(item) creates and adds a new element node 
       // containing item at the front of the list
       void addFront(T item){
+	//make a new node and store the item in it
+	Node<T>* pNode = new Node<T>;
+	pNode->element = item;
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    addFront(item): you need to write this method <-------------"<<endl;
+	//point the new nod's next to the current head node
+	pNode->next  = this->head;
 
-        // cout<<"new node added at front !"<<endl; // your method MUST use this!
+	//update the head node to the new node
+	this->head = pNode;
+
+        cout<<"new node added at front !"<<endl; // your method MUST use this!
       }
 
       // addAt(index, item) creates and adds a new element node containing 
