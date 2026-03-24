@@ -199,13 +199,34 @@ template <typename T> class List{
     
       // removeLast() deletes the last element and its node in the list
       void removeLast(){
+	//check if the list is empty
+	if(this->isEmpty())
+	{
+		cout <<"The list is empty !" << endl;
+	}
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    removeLast(): you need to write this method <-------------"<<endl;
+	//if there is only one node, remove it
+	else if(this->head->next == NULL)
+	{
+		this->head->~Node();
+		this->head = NULL;
+                cout<<"last item removed"<<endl; // your method MUST use this!
+	}
 
-          // cout<<"last item removed"<<endl; // your method MUST use this!
+	else
+	{
+		//go to the second-to-last node
+		Node<T>* temp = this->head;
+		while(temp->next->next != NULL)
+		{
+			temp = temp->next;
+		}
+
+		//destroy the last node
+		temp->next->~Node();
+		temp->next = NULL;
+		cout << "last item removed" << endl;
+	}
       }
 
       // removeAt(index) deletes the element and its node found at 
